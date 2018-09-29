@@ -11,8 +11,11 @@
 // create tcp server
 var net = require('net');
 
-var count = 0;
+var count = 0
+    , users = {};
+
 var server = net.createServer(function (conn) {
+    var nickname;
     count++;
 
     // set encoding
@@ -22,17 +25,45 @@ var server = net.createServer(function (conn) {
     console.log('new connection received !!');
     // send welcome message
     conn.write(
-        "welcome to happy land (" + count  + ") :)"
+        "> welcome to happy land (" + count  + ") :) \n > please enter your name :"
     );
 
     conn.on('close', function () {
         count--;
-        console.log("someone left the chat");
+        delete users[nickname];
+        broadcast('>' + nickname + 'left the chat');
     });
 
     conn.on('data', function (data) {
         console.log(data);
+        data = data.replace('\r\n', '');
+
+        // first from client is nickname
+
+        // if nickname is not initialized the log this
+        // nickname joined
+        if (!nickname) {
+            if (users[data]) {
+                conn.write('>nickname is already in use. please try again');
+                return;
+            } else {
+                nickname = data;
+                users[nickname] = conn;
+
+                broadcast('> new user ' + nickname + ' has joined \n');
+            }
+        } else {
+            broadcast('> ' + nickname + ': ' + data + '\n');
+        }
     });
+
+    function broadcast(msg, exceptMyself) {
+        for (var i in users) {
+            if (!exceptMyself || i != nickname) {
+                users[i].write(msg);
+            }
+        }
+    }
 });
 
 server.listen(3000, function () {
