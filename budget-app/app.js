@@ -45,8 +45,22 @@ var UIController = (function() {
 var controller = (function(budgetCtrl, uiCtrl) {
     // controller code
     
-    // assigning domstring from uiController
-    var DOMString = uiCtrl.getDomString();
+    var setupApp = function() {
+        // assigning domstring from uiController
+        var DOMString = uiCtrl.getDomString();
+        
+        document.querySelector(DOMString.addBtn).addEventListener('click', function() {
+            console.log('button clicked');
+            addData();
+        });
+        
+        document.addEventListener('keypress', function(event) {
+            if (event.charCode === 13) {
+                console.log('enter is pressed');
+                addData();
+            }
+        });
+    }
     
     // add data
     function addData() {
@@ -57,15 +71,12 @@ var controller = (function(budgetCtrl, uiCtrl) {
         console.log('value :' + input.value);
     }
     
-    document.querySelector(DOMString.addBtn).addEventListener('click', function() {
-       console.log('button clicked');
-       addData();
-    });
-    
-    document.addEventListener('keypress', function(event) {
-        if (event.charCode === 13) {
-            console.log('enter is pressed');
-            addData();
+    return {
+        init: function() {
+            console.log('application started');
+            setupApp();
         }
-    });
+    }
 })(budgetController, UIController); 
+
+controller.init();
