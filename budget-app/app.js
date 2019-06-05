@@ -17,16 +17,25 @@ var budgetController = (function() {
 var UIController = (function() {
    // ui code
     
-    console.log(document.querySelector('.add__description'));
+    //DOMString
+    DOMStrings = {
+        type: '.add__type',
+        description: '.add__description',
+        value:'.add__value',
+        addBtn:'.add__btn'
+    }
     
     
     return {
         getInput : function() {
             return {
-                type: document.querySelector('.add__type').value,
-                desctription: document.querySelector('.add__description').value,
-                value: document.querySelector('.add__value').value
+                type: document.querySelector(DOMStrings.type).value,
+                desctription: document.querySelector(DOMStrings.description).value,
+                value: document.querySelector(DOMStrings.value).value
             }
+        },
+        getDomString: function() {
+            return DOMStrings;
         }
     }
 }
@@ -35,6 +44,9 @@ var UIController = (function() {
 
 var controller = (function(budgetCtrl, uiCtrl) {
     // controller code
+    
+    // assigning domstring from uiController
+    var DOMString = uiCtrl.getDomString();
     
     // add data
     function addData() {
@@ -45,7 +57,7 @@ var controller = (function(budgetCtrl, uiCtrl) {
         console.log('value :' + input.value);
     }
     
-    document.querySelector('.add__btn').addEventListener('click', function() {
+    document.querySelector(DOMString.addBtn).addEventListener('click', function() {
        console.log('button clicked');
        addData();
     });
