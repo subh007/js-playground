@@ -25,4 +25,8 @@ var controller = (function(budgetCtrl, uiCtrl) {
     document.querySelector('.add__btn').addEventListener('click', function() {
        console.log('button clicked'); 
     });
+    
+    document.addEventListener('keypress', function(event) {
+        console.log(event);
+    });
 })(budgetController, UIController); 
