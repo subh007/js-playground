@@ -8,7 +8,15 @@
         <title>Budgety</title>
     </head>
     <body>
-        <button class="add__btn"><i class="ion-ios-checkmark-outline">click</button>
+        <div>
+            <select class="add__type">
+                <option value="inc" selected>+</option>
+                <option value="exp">-</option>
+            </select>
+            <input type="text" placeholder="description" class="add__description">
+            <input type="number" placeholder="Value" class="add__value">
+            <button class="add__btn"><i class="ion-ios-checkmark-outline">click</button>
+        </div>
         <script src="app.js"></script>
     </body>
 </html>

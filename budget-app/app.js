@@ -15,7 +15,20 @@ var budgetController = (function() {
 
 
 var UIController = (function() {
-   // ui code 
+   // ui code
+    
+    console.log(document.querySelector('.add__description'));
+    
+    
+    return {
+        getInput : function() {
+            return {
+                type: document.querySelector('.add__type').value,
+                desctription: document.querySelector('.add__description').value,
+                value: document.querySelector('.add__value').value
+            }
+        }
+    }
 }
 )();
 
@@ -25,7 +38,11 @@ var controller = (function(budgetCtrl, uiCtrl) {
     
     // add data
     function addData() {
-        console.log('add data');
+        // read ui element
+        var input = uiCtrl.getInput();
+        console.log('type :' + input.type);
+        console.log('desc :' + input.desctription);
+        console.log('value :' + input.value);
     }
     
     document.querySelector('.add__btn').addEventListener('click', function() {
