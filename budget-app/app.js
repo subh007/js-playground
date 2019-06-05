@@ -1,17 +1,28 @@
 // example for iife (to obtain data privacy)
 var budgetController = (function() {
-    var x = 20;
-    var add = function (y) {
-        return x + y;
-    }
+    var Expense = function(id, desc, value) {
+        this.id = id;
+        this.desc = desc;
+        this.value = value;
+    };
+
+    var Income = function(id, desc, value) {
+        this.id = id;
+        this.desc = desc;
+        this.value = value;
+    };
     
-    return {
-     publicTest: function(a) {
-         console.log(add(a));
-     }   
-    }
-}
-)();
+    var data = {
+        items: {
+            income: [],
+            expense: []
+        },
+        totals: {
+            expense: 0.0,
+            income: 0.0
+        }
+    };
+})();
 
 
 var UIController = (function() {
