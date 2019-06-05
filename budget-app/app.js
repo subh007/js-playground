@@ -22,5 +22,7 @@ var UIController = (function() {
 
 var controller = (function(budgetCtrl, uiCtrl) {
     // controller code
-}
-)(budgetController, UIController);
+    document.querySelector('.add__btn').addEventListener('click', function() {
+       console.log('button clicked'); 
+    });
+})(budgetController, UIController); 
