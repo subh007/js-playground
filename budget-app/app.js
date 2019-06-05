@@ -12,3 +12,15 @@ var budgetController = (function() {
     }
 }
 )();
+
+
+var UIController = (function() {
+   // ui code 
+}
+)();
+
+
+var controller = (function(budgetCtrl, uiCtrl) {
+    // controller code
+}
+)(budgetController, UIController);
