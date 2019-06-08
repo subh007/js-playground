@@ -40,6 +40,7 @@ var budgetController = (function() {
             }
             
             data.items[type].push(newItem);
+            return newItem;
         },
         testing: function() {
             console.log(data);
@@ -70,6 +71,23 @@ var UIController = (function() {
         },
         getDomString: function() {
             return DOMStrings;
+        },
+        
+        addListItem: function(newItem, type) {
+            var htmlString;
+            if (type === 'inc') {
+                htmlString = '<div class="item__income"><div class="item__description">%description%</div><div class="item__value">%value%</div></div>'
+            } else if (type == 'exp') {
+                
+            }
+            
+            // replace data in template
+            htmlString = htmlString.replace('%description%', newItem.desc);
+            htmlString = htmlString.replace('%value%', newItem.value);
+            
+            // render html
+            var incomeList = document.querySelector('.income__list');
+            incomeList.insertAdjacentHTML('beforeend', htmlString);
         }
     }
 }
@@ -104,7 +122,12 @@ var controller = (function(budgetCtrl, uiCtrl) {
         console.log('desc :' + input.desctription);
         console.log('value :' + input.value);
         
-        budgetCtrl.addItem(input.type, input.desctription, input.value);
+        var newItem = budgetCtrl.addItem(input.type, input.desctription, input.value);
+        console.log(newItem);
+        
+        // call uictrl to add item
+        uiCtrl.addListItem(newItem, input.type);
+        
     }
     
     return {

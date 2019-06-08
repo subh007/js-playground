@@ -8,14 +8,41 @@
         <title>Budgety</title>
     </head>
     <body>
-        <div>
-            <select class="add__type">
-                <option value="inc" selected>+</option>
-                <option value="exp">-</option>
-            </select>
-            <input type="text" placeholder="description" class="add__description">
-            <input type="number" placeholder="Value" class="add__value">
-            <button class="add__btn"><i class="ion-ios-checkmark-outline">click</button>
+        <div class="bottom">
+            <div>
+                <select class="add__type">
+                    <option value="inc" selected>+</option>
+                    <option value="exp">-</option>
+                </select>
+                <input type="text" placeholder="description" class="add__description">
+                <input type="number" placeholder="Value" class="add__value">
+                <button class="add__btn"><i class="ion-ios-checkmark-outline"></i>click</button>
+            </div>
+            <div>
+                <div class="income">
+                    <h2>Income</h2>
+                    
+                    <div class="income__list">
+                        <!--
+                        <div class="item__income">
+                            <div class="item__description">salary1111</div>
+                            <div class="item__value">$2100</div>
+                        </div>
+                        <div class="item__income">
+                            <div class="item__description">salary</div>
+                            <div class="item__value">$2100</div>
+                        </div>
+                        <div class="item__income">
+                            <div class="item__description">salary</div>
+                            <div class="item__value">$2100</div>
+                        </div>
+                       -->
+                    </div>
+                </div>
+                <div class="expense">
+                    <h2>Expence</h2>
+                </div>
+            </div>
         </div>
         <script src="app.js"></script>
     </body>
