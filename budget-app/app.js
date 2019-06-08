@@ -79,10 +79,10 @@ var UIController = (function() {
             var htmlString, element;
             if (type === 'inc') {
                 element = document.querySelector(DOMStrings.incomeList);
-                htmlString = '<div class="item__income"><div class="item__description">%description%</div><div class="item__value">%value%</div></div>';
+                htmlString = '<div class="item__income"><div class="item__description">%description%</div><div class="item__value">%value%</div><div><button>rm</button></div></div>';
             } else if (type == 'exp') {
                 element = document.querySelector(DOMStrings.expenseList);
-                htmlString = '<div class="item__income"><div class="item__description">%description%</div><div class="item__value">%value%</div></div>';
+                htmlString = '<div class="item__income"><div class="item__description">%description%</div><div class="item__value">%value%</div><div><button>rm</button></div></div>';
             }
             
             // replace data in template

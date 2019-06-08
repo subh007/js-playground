@@ -51,6 +51,12 @@
     margin-right: 100px;
 }
 
+.item__value {
+    float: left;
+    width: 20px;
+    margin-right: 20px;
+}
+
 .item__income {
     padding: 13px;
     border-bottom: 1px solid #e7e7e7;
