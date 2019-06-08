@@ -57,7 +57,9 @@ var UIController = (function() {
         type: '.add__type',
         description: '.add__description',
         value:'.add__value',
-        addBtn:'.add__btn'
+        addBtn:'.add__btn',
+        incomeList: '.income__list',
+        expenseList: '.expense__list'
     }
     
     
@@ -74,11 +76,13 @@ var UIController = (function() {
         },
         
         addListItem: function(newItem, type) {
-            var htmlString;
+            var htmlString, element;
             if (type === 'inc') {
-                htmlString = '<div class="item__income"><div class="item__description">%description%</div><div class="item__value">%value%</div></div>'
+                element = document.querySelector(DOMStrings.incomeList);
+                htmlString = '<div class="item__income"><div class="item__description">%description%</div><div class="item__value">%value%</div></div>';
             } else if (type == 'exp') {
-                
+                element = document.querySelector(DOMStrings.expenseList);
+                htmlString = '<div class="item__income"><div class="item__description">%description%</div><div class="item__value">%value%</div></div>';
             }
             
             // replace data in template
@@ -86,8 +90,7 @@ var UIController = (function() {
             htmlString = htmlString.replace('%value%', newItem.value);
             
             // render html
-            var incomeList = document.querySelector('.income__list');
-            incomeList.insertAdjacentHTML('beforeend', htmlString);
+            element.insertAdjacentHTML('beforeend', htmlString);
         }
     }
 }

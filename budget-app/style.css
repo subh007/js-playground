@@ -42,6 +42,7 @@
 
 .expense {
     float: left;
+    width: 475px;
 }
 
 .item__description {
