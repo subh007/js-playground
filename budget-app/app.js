@@ -68,7 +68,7 @@ var UIController = (function() {
             return {
                 type: document.querySelector(DOMStrings.type).value,
                 desctription: document.querySelector(DOMStrings.description).value,
-                value: document.querySelector(DOMStrings.value).value
+                value: parseFloat(document.querySelector(DOMStrings.value).value)
             }
         },
         getDomString: function() {
@@ -137,7 +137,8 @@ var controller = (function(budgetCtrl, uiCtrl) {
         console.log('desc :' + input.desctription);
         console.log('value :' + input.value);
         
-        var newItem = budgetCtrl.addItem(input.type, input.desctription, input.value);
+        if (input.desctription != "" && !isNaN(input.value) && input.value >= 0) {
+            var newItem = budgetCtrl.addItem(input.type, input.desctription, input.value);
         console.log(newItem);
         
         // call uictrl to add item
@@ -145,6 +146,7 @@ var controller = (function(budgetCtrl, uiCtrl) {
         
         // clear input fields
         uiCtrl.clearInput();
+        } 
     }
     
     return {
