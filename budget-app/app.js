@@ -101,6 +101,8 @@ var UIController = (function() {
             arr.forEach( function(item, index, array) {
                 item.value = "";
             });
+            
+            arr[0].focus();
         }
     }
 }
