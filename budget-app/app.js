@@ -91,6 +91,16 @@ var UIController = (function() {
             
             // render html
             element.insertAdjacentHTML('beforeend', htmlString);
+        },
+        
+        clearInput: function() {
+            var fields, arr;
+            fields = document.querySelectorAll(DOMStrings.description + ', ' + DOMStrings.value);
+            
+            arr = Array.prototype.slice.call(fields);
+            arr.forEach( function(item, index, array) {
+                item.value = "";
+            });
         }
     }
 }
@@ -131,6 +141,8 @@ var controller = (function(budgetCtrl, uiCtrl) {
         // call uictrl to add item
         uiCtrl.addListItem(newItem, input.type);
         
+        // clear input fields
+        uiCtrl.clearInput();
     }
     
     return {
