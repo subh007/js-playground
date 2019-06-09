@@ -23,6 +23,14 @@ var budgetController = (function() {
         }
     };
     
+    function calculateTotal(type) {
+        var sum = 0;
+        data.items[type].forEach(function(item) {
+            sum+=item.value;
+        });
+        data.totals[type] = sum;
+    }
+    
     return {
         addItem: function(type, desc, val) {
             var newItem, ID;
@@ -44,6 +52,13 @@ var budgetController = (function() {
         },
         testing: function() {
             console.log(data);
+        },
+        
+        calculateBudget: function() {
+            calculateTotal('inc');
+            calculateTotal('exp');
+            
+            return data.totals;
         }
     }
 })();
@@ -146,6 +161,10 @@ var controller = (function(budgetCtrl, uiCtrl) {
         
         // clear input fields
         uiCtrl.clearInput();
+            
+        // calculate budget
+        var totals = budgetCtrl.calculateBudget();
+        console.log(totals);
         } 
     }
     
