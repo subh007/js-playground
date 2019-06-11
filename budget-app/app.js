@@ -74,7 +74,9 @@ var UIController = (function() {
         value:'.add__value',
         addBtn:'.add__btn',
         incomeList: '.income__list',
-        expenseList: '.expense__list'
+        expenseList: '.expense__list',
+        topIncome: '.top__income',
+        topExpense: '.top__expense'
     }
     
     
@@ -118,6 +120,14 @@ var UIController = (function() {
             });
             
             arr[0].focus();
+        },
+        
+        displayBudget: function(obj) {
+            var incomeLabel = document.querySelector(DOMStrings.topIncome);
+            var expenseLabel = document.querySelector(DOMStrings.topExpense);
+            
+            incomeLabel.textContent = obj.inc;
+            expenseLabel.textContent = obj.exp;
         }
     }
 }
@@ -165,6 +175,9 @@ var controller = (function(budgetCtrl, uiCtrl) {
         // calculate budget
         var totals = budgetCtrl.calculateBudget();
         console.log(totals);
+            
+        // display budget
+        uiCtrl.displayBudget(totals);
         } 
     }
     
