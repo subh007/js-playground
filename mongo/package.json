@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "sample mongo app",
   "dependencies": {
-    "express": "2.5.8",
+    "express": "3.11.0",
     "mongodb": "0.9.9",
     "jade": "0.20.3"
   }
