@@ -3,6 +3,6 @@
   "version": "0.0.1",
   "description": "site using connect",
   "dependencies": {
-    "connect": "3.0.0"
+    "connect": "3.7.0"
   }
 }
